@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=hero-online-booking-button" />
+    <link rel="stylesheet" href="styles.css?v=booking-times-row" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -316,27 +316,15 @@
                 <h3>Свободное время</h3>
               </div>
               <div class="time-periods">
-                <section>
-                  <p>Утро</p>
-                  <div class="time-groups" data-time-picker>
-                    <button class="time-chip" type="button" data-time-value="10:00">10:00</button>
-                    <button class="time-chip" type="button" data-time-value="11:30">11:30</button>
-                  </div>
-                </section>
-                <section>
-                  <p>День</p>
-                  <div class="time-groups" data-time-picker>
-                    <button class="time-chip active" type="button" data-time-value="14:00">14:00</button>
-                    <button class="time-chip" type="button" data-time-value="16:00">16:00</button>
-                  </div>
-                </section>
-                <section>
-                  <p>Вечер</p>
-                  <div class="time-groups" data-time-picker>
-                    <button class="time-chip" type="button" data-time-value="18:30">18:30</button>
-                    <button class="time-chip" type="button" data-time-value="20:00">20:00</button>
-                  </div>
-                </section>
+                <div class="time-groups" data-time-picker>
+                  <button class="time-chip active" type="button" data-time-value="10:00">10:00</button>
+                  <button class="time-chip" type="button" data-time-value="11:30">11:30</button>
+                  <button class="time-chip" type="button" data-time-value="13:00">13:00</button>
+                  <button class="time-chip" type="button" data-time-value="14:30">14:30</button>
+                  <button class="time-chip" type="button" data-time-value="16:00">16:00</button>
+                  <button class="time-chip" type="button" data-time-value="17:30">17:30</button>
+                  <button class="time-chip" type="button" data-time-value="19:00">19:00</button>
+                </div>
               </div>
             </div>
           </div>
@@ -351,7 +339,7 @@
               </div>
               <div>
                 <dt>Время</dt>
-                <dd data-booking-time>14:00</dd>
+                <dd data-booking-time>10:00</dd>
               </div>
               <div>
                 <dt>Оплата</dt>

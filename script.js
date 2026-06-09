@@ -16,7 +16,7 @@ const documentsClose = document.querySelectorAll("[data-documents-close]");
 const bookingState = {
   service: document.querySelector("[data-service-value].active")?.dataset.serviceValue || "Массаж спины · 40 минут · 2 200 ₽",
   date: document.querySelector("[data-date-value].active")?.dataset.dateValue || "10 июня, среда",
-  time: document.querySelector("[data-time-value].active")?.dataset.timeValue || "14:00",
+  time: document.querySelector("[data-time-value].active")?.dataset.timeValue || "10:00",
 };
 
 window.addEventListener("scroll", () => {
