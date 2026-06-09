@@ -2,10 +2,22 @@ const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const serviceOptions = document.querySelectorAll("[data-service-value]");
-const bookingSummary = document.querySelector("[data-booking-summary] strong");
+const dateOptions = document.querySelectorAll("[data-date-value]");
+const timeOptions = document.querySelectorAll("[data-time-value]");
+const bookingSummary = document.querySelector("[data-booking-summary]");
+const bookingDate = document.querySelector("[data-booking-date]");
+const bookingTime = document.querySelector("[data-booking-time]");
+const whatsappBooking = document.querySelector("[data-whatsapp-booking]");
+const telegramBooking = document.querySelector("[data-telegram-booking]");
 const documentsModal = document.querySelector("[data-documents-modal]");
 const documentsOpen = document.querySelector("[data-documents-open]");
 const documentsClose = document.querySelectorAll("[data-documents-close]");
+
+const bookingState = {
+  service: document.querySelector("[data-service-value].active")?.dataset.serviceValue || "Массаж спины · 40 минут · 2 200 ₽",
+  date: document.querySelector("[data-date-value].active")?.dataset.dateValue || "10 июня, среда",
+  time: document.querySelector("[data-time-value].active")?.dataset.timeValue || "14:00",
+};
 
 window.addEventListener("scroll", () => {
   header.classList.toggle("scrolled", window.scrollY > 20);
@@ -26,13 +38,61 @@ nav.querySelectorAll("a").forEach((link) => {
   });
 });
 
+function updateBookingSummary() {
+  if (bookingSummary) {
+    bookingSummary.textContent = bookingState.service;
+  }
+
+  if (bookingDate) {
+    bookingDate.textContent = bookingState.date;
+  }
+
+  if (bookingTime) {
+    bookingTime.textContent = bookingState.time;
+  }
+
+  const message = `Здравствуйте! Хочу записаться на массаж.\n\nУслуга: ${bookingState.service}\nДата: ${bookingState.date}\nВремя: ${bookingState.time}\n\nПодскажите, пожалуйста, свободно ли это время?`;
+
+  if (whatsappBooking) {
+    whatsappBooking.href = `https://wa.me/79005636376?text=${encodeURIComponent(message)}`;
+  }
+
+  if (telegramBooking) {
+    telegramBooking.href = "https://t.me/massage_by_anastasiia";
+    telegramBooking.title = message;
+  }
+}
+
+function activateOption(options, selected, className = "active") {
+  options.forEach((item) => item.classList.remove(className));
+  selected.classList.add(className);
+}
+
 serviceOptions.forEach((option) => {
   option.addEventListener("click", () => {
-    serviceOptions.forEach((item) => item.classList.remove("active"));
-    option.classList.add("active");
-    bookingSummary.textContent = option.dataset.serviceValue;
+    activateOption(serviceOptions, option);
+    bookingState.service = option.dataset.serviceValue;
+    updateBookingSummary();
   });
 });
+
+dateOptions.forEach((option) => {
+  option.addEventListener("click", () => {
+    activateOption(dateOptions, option);
+    bookingState.date = option.dataset.dateValue;
+    updateBookingSummary();
+  });
+});
+
+timeOptions.forEach((option) => {
+  option.addEventListener("click", () => {
+    activateOption(timeOptions, option);
+    bookingState.time = option.dataset.timeValue;
+    updateBookingSummary();
+  });
+});
+
+updateBookingSummary();
 
 function setDocumentsOpen(isOpen) {
   documentsModal.classList.toggle("open", isOpen);
