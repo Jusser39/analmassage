@@ -1238,17 +1238,17 @@ select {
 }
 
 .booking-online {
-  --booking-photo: url("booking-online.webp");
+  --booking-photo: url("booking-online-photo-blend.webp");
   --booking-position: center 56%;
 }
 
 .booking-telegram {
-  --booking-photo: url("booking-telegram.webp");
+  --booking-photo: url("booking-telegram-photo-blend.webp");
   --booking-position: center bottom;
 }
 
 .booking-whatsapp {
-  --booking-photo: url("booking-whatsapp.webp");
+  --booking-photo: url("booking-whatsapp-photo-blend.webp");
   --booking-position: center 48%;
 }
 
