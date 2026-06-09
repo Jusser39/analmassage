@@ -46,7 +46,9 @@ a {
 }
 
 button,
-select {
+select,
+input,
+textarea {
   font: inherit;
 }
 
@@ -989,6 +991,61 @@ select {
   white-space: nowrap;
 }
 
+.program-card {
+  background: rgba(253, 251, 247, 0.82);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  display: grid;
+  gap: 12px;
+  padding: 13px 14px;
+  transition: all 0.3s ease;
+}
+
+.program-card:has(.program-choice.active) {
+  background: #eef2e9;
+  border-color: rgba(163, 177, 155, 0.9);
+}
+
+.program-card strong {
+  display: block;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.program-card small {
+  color: var(--muted);
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-top: 3px;
+}
+
+.program-options {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.program-choice {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--coffee);
+  cursor: pointer;
+  font-size: 13px;
+  min-height: 38px;
+  padding: 0 10px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.program-choice.active,
+.program-choice:hover {
+  background: var(--coffee);
+  border-color: var(--coffee);
+  color: var(--surface);
+}
+
 .time-groups {
   display: flex;
   flex-wrap: wrap;
@@ -1107,6 +1164,79 @@ select {
 .contact-buttons {
   display: grid;
   gap: 10px;
+}
+
+.booking-form {
+  background: var(--surface);
+  border: 1px solid rgba(61, 58, 56, 0.08);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: none;
+  gap: 16px;
+  grid-template-columns: 1.05fr 0.72fr 0.72fr;
+  margin-top: 22px;
+  padding: clamp(22px, 4vw, 38px);
+  scroll-margin-top: var(--header-space);
+}
+
+.booking-form.open {
+  display: grid;
+}
+
+.booking-form h3 {
+  font-size: clamp(30px, 3.2vw, 42px);
+  margin-bottom: 10px;
+}
+
+.booking-form p {
+  margin: 0;
+}
+
+.booking-form label {
+  align-self: end;
+}
+
+.booking-form input,
+.booking-form textarea {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--coffee);
+  min-height: 52px;
+  outline: none;
+  padding: 12px 14px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.booking-form textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.booking-form input:focus,
+.booking-form textarea:focus {
+  background: var(--surface);
+  border-color: rgba(163, 177, 155, 0.82);
+  box-shadow: 0 0 0 3px rgba(163, 177, 155, 0.14);
+}
+
+.booking-form label:has(textarea),
+.form-actions,
+.form-status {
+  grid-column: 2 / -1;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-status {
+  color: var(--sage-dark);
+  font-size: 14px;
+  margin: 0;
 }
 
 .review-grid {
@@ -1285,8 +1415,19 @@ address a {
   .about,
   .gift,
   .booking-panel,
+  .booking-form,
   .footer {
     grid-template-columns: 1fr;
+  }
+
+  .booking-summary-card {
+    position: static;
+  }
+
+  .booking-form label:has(textarea),
+  .form-actions,
+  .form-status {
+    grid-column: 1;
   }
 
   .hero {
@@ -1406,6 +1547,10 @@ address a {
 
   .date-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .program-options {
+    grid-template-columns: 1fr;
   }
 
   .service-card {

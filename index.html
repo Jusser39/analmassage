@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=booking-times-row" />
+    <link rel="stylesheet" href="styles.css?v=booking-form-programs" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -263,27 +263,53 @@
                 <h3>Выберите услугу</h3>
               </div>
               <div class="service-picker" data-service-picker>
-                <button class="service-option active" type="button" data-service-value="Массаж спины · 40 минут · 2 200 ₽">
+                <button class="service-option active" type="button" data-service-code="back-40" data-service-value="Массаж спины · 40 минут · 2 200 ₽">
                   <span>Массаж спины</span>
                   <small>40 минут · 2 200 ₽</small>
                 </button>
-                <button class="service-option" type="button" data-service-value="Массаж лица + голова · 40 минут · 2 200 ₽">
+                <button class="service-option" type="button" data-service-code="face-head-40" data-service-value="Массаж лица + голова · 40 минут · 2 200 ₽">
                   <span>Массаж лица + голова</span>
                   <small>40 минут · 2 200 ₽</small>
                 </button>
-                <button class="service-option" type="button" data-service-value="Релакс массаж · 60 минут · 2 900 ₽">
+                <button class="service-option" type="button" data-service-code="posterior-40" data-service-value="Массаж задней поверхности · 40 минут · 2 200 ₽">
+                  <span>Массаж задней поверхности</span>
+                  <small>40 минут · 2 200 ₽</small>
+                </button>
+                <button class="service-option" type="button" data-service-code="relax-60" data-service-value="Релакс массаж · 60 минут · 2 900 ₽">
                   <span>Релакс массаж</span>
                   <small>60 минут · 2 900 ₽</small>
                 </button>
-                <button class="service-option" type="button" data-service-value="Общий оздоровительный · 60 минут · 2 900 ₽">
-                  <span>Общий оздоровительный</span>
-                  <small>60 минут · 2 900 ₽</small>
-                </button>
-                <button class="service-option" type="button" data-service-value="Антицеллюлитный · 90 минут · 3 600 ₽">
-                  <span>Антицеллюлитный</span>
-                  <small>90 минут · 3 600 ₽</small>
-                </button>
-                <button class="service-option" type="button" data-service-value="Фейс-реконструкция · 50 минут · 2 500 ₽">
+                <article class="program-card">
+                  <div>
+                    <strong>Общий оздоровительный</strong>
+                    <small>комплексная работа по телу</small>
+                  </div>
+                  <div class="program-options">
+                    <button class="program-choice" type="button" data-service-code="general-60" data-service-value="Общий оздоровительный · 60 минут · 2 900 ₽">60 минут · 2 900 ₽</button>
+                    <button class="program-choice" type="button" data-service-code="general-90" data-service-value="Общий оздоровительный · 90 минут · 3 600 ₽">90 минут · 3 600 ₽</button>
+                  </div>
+                </article>
+                <article class="program-card">
+                  <div>
+                    <strong>Антицеллюлитный</strong>
+                    <small>активная техника для тонуса кожи</small>
+                  </div>
+                  <div class="program-options">
+                    <button class="program-choice" type="button" data-service-code="anti-60" data-service-value="Антицеллюлитный · 60 минут · 2 900 ₽">60 минут · 2 900 ₽</button>
+                    <button class="program-choice" type="button" data-service-code="anti-90" data-service-value="Антицеллюлитный · 90 минут · 3 600 ₽">90 минут · 3 600 ₽</button>
+                  </div>
+                </article>
+                <article class="program-card">
+                  <div>
+                    <strong>Лимфодренажный</strong>
+                    <small>мягкая работа для ощущения легкости</small>
+                  </div>
+                  <div class="program-options">
+                    <button class="program-choice" type="button" data-service-code="lymph-60" data-service-value="Лимфодренажный · 60 минут · 2 900 ₽">60 минут · 2 900 ₽</button>
+                    <button class="program-choice" type="button" data-service-code="lymph-90" data-service-value="Лимфодренажный · 90 минут · 3 600 ₽">90 минут · 3 600 ₽</button>
+                  </div>
+                </article>
+                <button class="service-option" type="button" data-service-code="face-reconstruction-50" data-service-value="Фейс-реконструкция · 50 минут · 2 500 ₽">
                   <span>Фейс-реконструкция</span>
                   <small>50 минут · 2 500 ₽</small>
                 </button>
@@ -347,11 +373,35 @@
               </div>
             </dl>
             <div class="contact-buttons">
-              <a class="button primary full" data-whatsapp-booking href="https://wa.me/79005636376" target="_blank" rel="noreferrer">Записаться в WhatsApp</a>
-              <a class="button secondary full" data-telegram-booking href="https://t.me/massage_by_anastasiia" target="_blank" rel="noreferrer">Написать в Telegram</a>
+              <button class="button primary full" type="button" data-open-booking-form>Записаться</button>
             </div>
           </aside>
         </div>
+        <form class="booking-form" id="booking-form" data-booking-form aria-hidden="true">
+          <div>
+            <p class="quiet-note">Анкета</p>
+            <h3>Оставьте контакты для подтверждения записи.</h3>
+            <p>После отправки заявка будет готова для подключения к боту. Пока можно дублировать запись в WhatsApp.</p>
+          </div>
+          <label>
+            Имя
+            <input type="text" name="name" placeholder="Ваше имя" autocomplete="name" required />
+          </label>
+          <label>
+            Телефон
+            <input type="tel" name="phone" placeholder="+7 ___ ___ __ __" autocomplete="tel" required />
+          </label>
+          <label>
+            Комментарий
+            <textarea name="comment" rows="3" placeholder="Например: хочу мягкую проработку спины"></textarea>
+          </label>
+          <input type="hidden" name="booking" data-booking-payload />
+          <div class="form-actions">
+            <button class="button primary" type="submit">Отправить заявку</button>
+            <a class="button secondary" data-whatsapp-booking href="https://wa.me/79005636376" target="_blank" rel="noreferrer">Продублировать в WhatsApp</a>
+          </div>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+        </form>
       </section>
 
       <section class="testimonials section-shell" id="reviews" aria-labelledby="reviews-title">
